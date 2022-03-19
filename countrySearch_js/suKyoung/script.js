@@ -18,21 +18,20 @@ function getKeyWord(e) {
   const {searchInput} = init();
   searchInput.value = keyWord;
 
-  console.log(keyWord);
+  getCountries(keyWord);
 };
 
 async function getCountries(keyWord) {
-  // keyWord를 토대로 국가정보를 받아옴
-  const URL = `API주소${keyWord}`;
+  const URL = `/api/search?keyword=${keyWord}`;
   const options = {
-    request : GET,
+    request : 'GET',
   };
   // deleteSearchResult();
   try {
     await fetch(URL, options)
-    .then(json => console.log(json))
-    .then(response => {
-      console.log(response.data);
+    .then(json => json.json())
+    .then(res => {
+      console.log(res); 
     })
   } catch(e) {
     throw Error('oops error');
