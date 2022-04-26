@@ -9,6 +9,12 @@
 - 네모박스는 drag & Drop하여 옮길 수 있다.
 - localStorage 기능을 사용하여 해당 네모박스를 브라우저에 저장한다.
 
+### 배포링크
+
+- [Maetdol](https://awesome-tomato.github.io/CodeReview/bulletinboard_js/maetdol/index.html)
+- [SuKyoung](https://awesome-tomato.github.io/CodeReview/bulletinboard_js/suKyoung/index.html)
+
+
 ### 참고자료
 
 - [Let's Build a Simple Bulletin Board React App](https://lo-victoria.com/lets-build-a-simple-bulletin-board-react-app)

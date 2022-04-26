@@ -1,0 +1,19 @@
+{
+  "name": "msw",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "npx webpack --mode=production"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "msw": "^0.39.2",
+    "terser-webpack-plugin": "^5.3.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "msw": {
+    "workerDirectory": ""
+  }
+}

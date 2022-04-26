@@ -37,6 +37,8 @@ div {
 span {
   width: 100%;
   color: snow;
+  user-select: none;
+  word-break: break-all;
 }
 .close {
   position: absolute;
