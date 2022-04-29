@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>나라 검색기</title>
-    <script src="script.js"></script>
+    <script src="js/index.js" type="module" defer></script>
     <script src="../msw.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
+  <body>
     <form>
-        <input type="text" placeholder="나라 이름을 입력해주세요">
-        <ul>
-            <li>Burkina Faso</li>
-            <li>Denmark</li>
-            <li>Kazakhstan</li>
-            <li>Kenya</li>
-            <li>Kiribati</li>
-            <li>Kuwait</li>
-            <li>Kyrgyzstan</li>
-            <li>North Korea</li>
-            <li>Pakistan</li>
-            <li>Saint Kitts and Nevis</li>
-            <li>Slovakia</li>
-            <li>South Korea</li>
-            <li>Sri Lanka</li>
-            <li>Tajikistan</li>
-            <li>Turkey</li>
-            <li>Turkmenistan</li>
-            <li>Ukraine</li>
-            <li>United Kingdom</li>
-            <li>Uzbekistan</li>
-        </ul>
+      <div class="search">
+        <input type="text" placeholder="나라 이름을 입력해주세요" />
+        <button type="button">
+          <svg
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+            focusable="false"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            data-testid="SearchIcon"
+          >
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <ul class="result">
+        <li><button>Burkina Faso</button></li>
+        <li><button>Denmark</button></li>
+        <li><button>Kazakhstan</button></li>
+        <li><button>Kenya</button></li>
+        <li><button>Kiribati</button></li>
+        <li><button>Kuwait</button></li>
+        <li><button>Kyrgyzstan</button></li>
+        <li><button>North Korea</button></li>
+        <li><button>Ukraine</button></li>
+        <li><button>United Kingdom</button></li>
+        <li><button>Uzbekistan</button></li>
+      </ul>
     </form>
-</body>
+  </body>
 </html>

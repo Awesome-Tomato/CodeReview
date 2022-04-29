@@ -1,5 +1,5 @@
 :root {
-  --c-point: #efb214;
+  --c-point: hsl(47deg 100% 57%);
   --c-point-light: #fff7e2;
   --c-white: white;
   --c-light-gray: #e0dcd1;
@@ -24,26 +24,45 @@ form {
   left: 10%;
   top: 10%;
 }
-
-input {
+.search {
+  position: relative;
+}
+.search input {
   background: white;
-  padding: 1.6rem 3.2rem 1.6rem 2.4rem;
-  border-radius: 6rem;
+  padding: 1.6rem 5.6rem 1.6rem 2.4rem;
+  border-radius: 0.4rem;
   border: none;
+  width: 320px;
 
   font-size: 2.4rem;
   line-height: 2.4rem;
   font-weight: bold;
+  letter-spacing: 0.01rem;
   color: var(--c-text);
 
   outline: none;
   box-shadow: 0.2rem 0.2rem 2.4rem rgba(0, 0, 0, 0.1);
+  transition: width 0.1s ease-in-out;
 }
-input::placeholder {
+.search input::placeholder {
   color: var(--c-text-light);
 }
+.search button {
+  height: 100%;
+  position: absolute;
+  padding: 0;
+  border: transparent;
+  background: transparent;
+  right: 0;
+  aspect-ratio: 1;
+}
+.search button svg {
+  color: var(--c-text);
+  width: 2.4rem;
+  height: 2.4rem;
+}
 
-ul {
+.result {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -53,17 +72,18 @@ ul {
   width: fit-content;
   border-radius: 0.4rem;
 
-  margin-left: 2.4rem;
+  width: calc(100% - 2.4rem);
+  margin-left: auto;
   margin-top: 0.8rem;
   box-shadow: 0.2rem 0.2rem 2.4rem rgba(0, 0, 0, 0.1);
 }
 
-li {
+.result li {
   position: relative;
   display: inline-block;
 }
-li:not(:last-child)::after {
-  content: "";
+.result li:not(:last-child)::after {
+  content: '';
   bottom: 0;
   left: 1.6rem;
   height: 0.1rem;
@@ -73,7 +93,7 @@ li:not(:last-child)::after {
   position: absolute;
 }
 
-button {
+.result button {
   padding: 1.6rem 3.2rem 1.6rem 1.6rem;
   text-align: left;
   border: 0;
@@ -84,6 +104,6 @@ button {
   transition: background-color 0.25s;
   color: var(--c-text);
 }
-button:hover {
+.result button:hover {
   background-color: var(--c-point-light);
 }
