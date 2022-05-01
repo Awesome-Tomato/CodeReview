@@ -55,10 +55,14 @@ form {
   border: transparent;
   background: transparent;
   right: 0;
+  top: 0;
   aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .search button svg {
-  color: var(--c-text);
+  fill: var(--c-text-light);
   width: 2.4rem;
   height: 2.4rem;
 }
