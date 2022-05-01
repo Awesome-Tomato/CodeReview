@@ -1,6 +1,7 @@
 :root {
   --c-point: hsl(47deg 100% 57%);
-  --c-point-light: #fff7e2;
+  --c-point-light-50: #ffeeb1;
+  --c-point-light-90: #fff7e2;
   --c-white: white;
   --c-light-gray: #e0dcd1;
 
@@ -73,6 +74,8 @@ form {
   border-radius: 0.4rem;
 
   width: calc(100% - 2.4rem);
+  max-height: calc((1.7rem + 3.2rem) * 6);
+  overflow: auto;
   margin-left: auto;
   margin-top: 0.8rem;
   box-shadow: 0.2rem 0.2rem 2.4rem rgba(0, 0, 0, 0.1);
@@ -94,6 +97,7 @@ form {
 }
 
 .result button {
+  font-size: 1.7rem;
   padding: 1.6rem 3.2rem 1.6rem 1.6rem;
   text-align: left;
   border: 0;
@@ -105,5 +109,8 @@ form {
   color: var(--c-text);
 }
 .result button:hover {
-  background-color: var(--c-point-light);
+  background-color: var(--c-point-light-90);
+}
+.result button:focus {
+  background-color: var(--c-point-light-50);
 }
