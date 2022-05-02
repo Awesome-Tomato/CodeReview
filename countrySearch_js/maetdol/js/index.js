@@ -1,5 +1,5 @@
 import { searchCountry } from './api.js';
-import { $, debounce } from './utils.js';
+import { $, capitalize, debounce } from './utils.js';
 
 init();
 
@@ -8,20 +8,26 @@ function init() {
     e.preventDefault();
   });
 
-  $('input').addEventListener(
-    'input',
-    debounce((e) => {
-      $('.result').innerHTML = '';
-      searchCountry(e.target.value).then((result) => {
-        result.forEach((country) => {
-          const li = document.createElement('li');
-          const button = document.createElement('button');
-          button.setAttribute('type', 'button');
-          button.innerText = country;
-          li.append(button);
-          $('.result').append(li);
-        });
-      });
-    }, 300)
-  );
+  const debouncedSearchCountry = debounce((keyword) => {
+    searchCountry(keyword).then(redrawSearchResult);
+  }, 300);
+  const $input = $('input');
+  $input.addEventListener('input', (e) => {
+    debouncedSearchCountry(e.target.value);
+  });
+}
+
+function redrawSearchResult(countries) {
+  const $result = $('.result');
+  $result.innerHTML = '';
+  countries.map(createResultItem).forEach((li) => $result.append(li));
+}
+
+function createResultItem(country) {
+  const li = document.createElement('li');
+  const button = document.createElement('button');
+  button.setAttribute('type', 'button');
+  button.innerText = country;
+  li.append(button);
+  return li;
 }
