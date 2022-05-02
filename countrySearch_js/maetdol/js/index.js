@@ -13,6 +13,7 @@ function init() {
   }, 300);
   const $input = $('input');
   $input.addEventListener('input', (e) => {
+    $input.value = capitalize($input.value);
     debouncedSearchCountry(e.target.value);
   });
 }

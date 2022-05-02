@@ -25,3 +25,7 @@ export function debounce(fn, holdingTime) {
     timerId = setTimeout(() => fn(...args), holdingTime);
   };
 }
+
+export function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
