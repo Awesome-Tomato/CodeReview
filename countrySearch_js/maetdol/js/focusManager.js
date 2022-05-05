@@ -1,3 +1,5 @@
+import { last } from './utils.js';
+
 export class Focusmanager {
   /**
    * @type {[HTMLElement, HTMLElement[]][]}
@@ -20,7 +22,7 @@ export class Focusmanager {
    */
   removeGroup(handleElement) {
     handleElement.removeEventListener('keydown', this.#keyDownHandler);
-    const index = this.#findGroupIndex(handleElement);
+    const index = this.#findGroupIndexBy(handleElement);
     if (index === -1) return;
     this.groups.splice(index, 1);
   }
@@ -45,9 +47,19 @@ export class Focusmanager {
   /**
    *
    * @param {HTMLElement} handleElement
+   * @returns {number}
    */
-  #findGroupIndex(handleElement) {
+  #findGroupIndexBy(handleElement) {
     return this.groups.findIndex((group) => group[0] === handleElement);
+  }
+
+  /**
+   *
+   * @param {[HTMLElement, HTMLElement[]]} group
+   * @returns {number}
+   */
+  #findFocusedIndexInGroup(group) {
+    return group[1].findIndex((element) => element === document.activeElement);
   }
 
   /**
@@ -55,24 +67,7 @@ export class Focusmanager {
    * @param {HTMLElement} handleElement
    */
   #upArrowHandler(handleElement) {
-    const groupIndex = this.#findGroupIndex(handleElement);
-    const [, moveableElements] = this.groups[groupIndex];
-    let currentFocusedIndex = moveableElements.findIndex(
-      (element) => element === document.activeElement
-    );
-
-    const previouseTarget = moveableElements[currentFocusedIndex - 1];
-    if (previouseTarget) {
-      previouseTarget.focus();
-      return;
-    }
-
-    const previouseGroup = this.groups[groupIndex - 1];
-    if (!previouseGroup) return;
-    const previouseMoveableElements = previouseGroup[1];
-    const focusTarget =
-      previouseMoveableElements[previouseMoveableElements.length - 1];
-    focusTarget.focus();
+    this.#focusPositionedAt(handleElement, -1);
   }
 
   /**
@@ -80,21 +75,50 @@ export class Focusmanager {
    * @param {HTMLElement} handleElement
    */
   #downArrowHandler(handleElement) {
-    const groupIndex = this.#findGroupIndex(handleElement);
-    const [, moveableElements] = this.groups[groupIndex];
-    let currentFocusedIndex = moveableElements.findIndex(
-      (element) => element === document.activeElement
-    );
+    this.#focusPositionedAt(handleElement, 1);
+  }
 
-    const nextTarget = moveableElements[currentFocusedIndex + 1];
+  /**
+   *
+   * @param {HTMLElement} handleElement 핸들러가 등록된 부모 요소
+   * @param {number} distance 현재 포커스된 요소로부터
+   * 얼마나 떨어진 요소로 포커스를 이동할 것인지
+   */
+  #focusPositionedAt(handleElement, distance) {
+    const groupIndex = this.#findGroupIndexBy(handleElement);
+    const group = this.groups[groupIndex];
+    const currentlyFocusedIndex = this.#findFocusedIndexInGroup(group);
+
+    const nextTarget = this.#getElementInGroup(
+      group,
+      currentlyFocusedIndex + distance
+    );
     if (nextTarget) {
       nextTarget.focus();
       return;
     }
 
-    const nextGroup = this.groups[groupIndex + 1];
+    // 포커스를 이동할 요소가 없을 경우, 다음 그룹에서 찾는다
+    const direction = Math.sign(distance);
+    const nextGroup = this.groups[groupIndex + direction];
+
     if (!nextGroup) return;
-    const focusTarget = nextGroup[1][0];
-    focusTarget.focus();
+    let target = this.#getElementInGroup(nextGroup, 0);
+    if (direction === -1) {
+      const focusableElements = nextGroup[1];
+      target = last(focusableElements);
+    }
+    target.focus();
+  }
+
+  /**
+   *
+   * @param {[HTMLElement, HTMLElement[]]} group
+   * @param {number} index
+   * @returns {HTMLElement}
+   */
+  #getElementInGroup(group, index) {
+    const [, focusableElements] = group;
+    return focusableElements[index];
   }
 }
