@@ -9,18 +9,20 @@ function init() {
   });
 
   const debouncedSearchCountry = debounce((keyword) => {
-    searchCountry(keyword).then(redrawSearchResult);
+    searchCountry(keyword).then(drawSearchResult);
   }, 300);
   const $input = $('input');
   $input.addEventListener('input', (e) => {
+    $('.result').innerHTML = '';
+    if (!$input.value) return;
+
     $input.value = capitalize($input.value);
-    debouncedSearchCountry(e.target.value);
+    debouncedSearchCountry($input.value);
   });
 }
 
-function redrawSearchResult(countries) {
+function drawSearchResult(countries) {
   const $result = $('.result');
-  $result.innerHTML = '';
   countries.map(createResultItem).forEach((li) => $result.append(li));
 }
 
