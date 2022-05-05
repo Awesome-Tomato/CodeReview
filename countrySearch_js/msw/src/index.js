@@ -5,6 +5,6 @@ const worker = setupWorker(...handlers);
 
 worker.start({
 	serviceWorker: {
-		url: "/countrySearch_js/mockServiceWorker.js"
+		url: "/CodeReview/countrySearch_js/mockServiceWorker.js"
 	}
 });
