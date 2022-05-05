@@ -2,6 +2,7 @@
   --c-point: hsl(47deg 100% 57%);
   --c-point-light-50: #ffeeb1;
   --c-point-light-90: #fff7e2;
+  --c-background: #161515;
   --c-white: white;
   --c-light-gray: #e0dcd1;
 
@@ -11,7 +12,7 @@
 
 html {
   font-size: 62.5%;
-  background-color: var(--c-point);
+  background-color: var(--c-background);
 }
 html,
 body {
@@ -117,4 +118,8 @@ form {
 }
 .result button:focus {
   background-color: var(--c-point-light-50);
+}
+
+mark {
+  background-color: var(--c-point);
 }
