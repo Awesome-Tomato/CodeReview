@@ -1,3 +1,5 @@
+import { $ } from './utils.js';
+
 export function drawSearchResultWith(keyword) {
   return function (countries) {
     const $result = $('.result');
