@@ -26,15 +26,11 @@ const BASE_URL = "/api/search";
 const options = { method: "GET" };
 async function getCountryNamesAndFlag(keyWord) {
   const QUERY_PARAMS = `?keyword=${keyWord}`;
-
-function deleteSearchResult() {
   try {
     await fetch(BASE_URL + QUERY_PARAMS, options)
       .then((res) => res.json())
       .then((res) => {
         const tempData = [...res];
-
-};
         const { searchResult } = getDOMElements();
         searchResult.children[0].remove();
         const newHTMLUlElement = createHTMLElementsWithData(tempData);
@@ -52,5 +48,6 @@ function createHTMLElementsWithData(dataArray) {
     newHTMLLiElement.append(dataArray[i]);
     newHTMLUlElement.append(newHTMLLiElement);
   }
+
   return newHTMLUlElement;
 }
