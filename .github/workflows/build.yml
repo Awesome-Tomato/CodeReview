@@ -1,0 +1,44 @@
+name: Build all project and delpoy
+on:
+  push:
+    branches: [main]
+
+jobs:
+  Demo-Action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: Awesome-Tomato/actions/get-build-target-fullpaths@v1
+        id: projectPaths
+        with:
+          workspace: ${{ github.workspace }}
+        
+      - uses: Awesome-Tomato/actions/build-by-path@v1
+        with:
+          fullpaths: ${{ steps.projectPaths.outputs.projectPaths }}
+      
+      - uses: Awesome-Tomato/actions/move-build-output-to-parent-directory@v1
+        with:
+          fullpaths: ${{ steps.projectPaths.outputs.projectPaths }}
+      
+      - uses: Awesome-Tomato/actions/add-deploy-path-to-readme-based-on-path@v1
+        with:
+          fullpaths: ${{ steps.projectPaths.outputs.projectPaths }}
+          projectBaseUrl: 'https://awesome-tomato.github.io/CodeReview'
+      
+      - name: Git configuring
+        run: |
+          git config user.name 'MaetDol'
+          git config user.email 'rndka9@gmail.com'
+      
+      - name: Deploy
+        run: |
+          git add --all 
+          git status
+          git commit -m 'Deploy build output by Github workflow'
+          git checkout gh-pages
+          git merge main --strategy-option theirs
+          git push origin gh-pages

@@ -4,7 +4,10 @@ import handlers from './api.js';
 const worker = setupWorker(...handlers);
 
 worker.start({
-	serviceWorker: {
-		url: "/CodeReview/countrySearch_js/mockServiceWorker.js"
-	}
+  serviceWorker: {
+    url:
+      process.env.NODE_ENV === 'production'
+        ? '/CodeReview/countrySearch_js/mockServiceWorker.js'
+        : '/countrySearch_js/mockServiceWorker.js',
+  },
 });
