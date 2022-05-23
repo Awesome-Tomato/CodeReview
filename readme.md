@@ -45,3 +45,6 @@ bulletinBoard_js (프로젝트명_사용기술)
 ### 프로젝트 정보 바로가기
 
 - [bulletinBoard_js](https://awesome-tomato.github.io/CodeReview/bulletinboard_js/)
+- [countrySearch_js](https://awesome-tomato.github.io/CodeReview/countrySearch_js/)
+- [chatComponent_js](https://awesome-tomato.github.io/CodeReview/chatComponent_js/)
+- [weddingCard_js](https://awesome-tomato.github.io/CodeReview/weddingCard_js/)
