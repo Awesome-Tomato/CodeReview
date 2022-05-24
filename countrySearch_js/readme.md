@@ -5,8 +5,8 @@
 
 ## 배포링크
 
-- [Maetdol](https://awesome-tomato.github.io/CodeReview/countrySearch_js/maetdol/index.html)
-- [SuKyoung](https://awesome-tomato.github.io/CodeReview/countrySearch_js/suKyoung/index.html)
+- [suKyoung](https://awesome-tomato.github.io/CodeReview/countrySearch_js/suKyoung/index.html)
+
 
 
 ## 프로젝트 기능
