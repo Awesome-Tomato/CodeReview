@@ -5,7 +5,6 @@
 
 ## 배포링크
 
-- [msw](https://awesome-tomato.github.io/CodeReview/countrySearch_js/msw/index.html)
 - [suKyoung](https://awesome-tomato.github.io/CodeReview/countrySearch_js/suKyoung/index.html)
 
 
