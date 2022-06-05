@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "npx webpack --mode=production"
+    "build": "npx webpack --mode=production",
+    "local": "npx webpack --mode=development"
+  },
+  "engines": {
+    "node": "^16.13.0"
   },
   "author": "",
   "license": "ISC",
