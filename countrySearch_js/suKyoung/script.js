@@ -6,20 +6,25 @@ function getDOMElement() {
   searchInput.addEventListener("keyup", getKeyWord);
 
   return {
-    searchInput, // input field
-    searchResult, // result field
+    searchInput, 
+    searchResult,
   };
 }
 
 function getKeyWord(e) {
   const inputValue = e.target.value;
-  if (inputValue[0] === undefined) return;
+  const keyWord = changeSmallLetter(inputValue);   
+  const { searchResult, searchInput } = getDOMElement();
 
-  const keyWord = changeSmallLetter(inputValue);    
-  getCountryNamesAndFlag(keyWord);
-
-  const { searchInput } = getDOMElement();
-  searchInput.value = changeCapitalLetter(keyWord);
+  // 입력값 있을 때만 api호출
+  if (inputValue !== '') {
+    getCountryNamesAndFlag(keyWord);
+    searchInput.value = changeCapitalLetter(keyWord);
+  }
+  // 입력값 없을 때는 api호출x
+  if (searchResult.children[0] !== undefined) {
+    searchResult.children[0].remove(); 
+  }
 }
 
 function changeSmallLetter(string) {
@@ -33,7 +38,7 @@ function changeCapitalLetter(string) {
   return result;
 }
 
-// NOTE: codeReview 루트에서 live server를 실행해야 msw실행됨
+// API호출
 const BASE_URL = "/api/search";
 const options = { method: "GET" };
 async function getCountryNamesAndFlag(keyWord) {
@@ -46,7 +51,9 @@ async function getCountryNamesAndFlag(keyWord) {
         const tempData = [...res];
         // 기존 ul요소 삭제
         const { searchResult } = getDOMElement();
-        searchResult.children[0].remove(); 
+        if (searchResult.children[0] !== undefined) {
+          searchResult.children[0].remove(); 
+        }
         // 새로 작성한 ul요소에 받아온 data값을 넣어서 렌더링
         const newHTMLUlElement = createHTMLElementsWithHighlightKeyword(keyWord, tempData); 
         searchResult.append(newHTMLUlElement);
