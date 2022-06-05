@@ -35,7 +35,12 @@ bulletinBoard_js (프로젝트명_사용기술)
 ### 컨벤션
 - 커밋 컨벤션 없음
 - 코드 리뷰 시, `최대한 논리적인 이유`를 덧붙인 코드리뷰 부탁드립니다.
+- [코드 리뷰 가이드](https://edykim.com/ko/post/code-review-guide/)
+- [효과적인 코드리뷰를 위한 리뷰어의 자세](https://tech.kakao.com/2022/03/17/2022-newkrew-onboarding-codereview/)
 - [코드리뷰의 목적은 성장이어야 한다.](https://jbee.io/essay/code-review-goal/)
 
 ### 프로젝트 정보 바로가기
 - [bulletinBoard_js](https://awesome-tomato.github.io/CodeReview/bulletinboard_js/)
+- [countrySearch_js](https://awesome-tomato.github.io/CodeReview/countrySearch_js/)
+- [chatComponent_js](https://awesome-tomato.github.io/CodeReview/chatComponent_js/)
+- [weddingCard_js](https://awesome-tomato.github.io/CodeReview/weddingCard_js/)
